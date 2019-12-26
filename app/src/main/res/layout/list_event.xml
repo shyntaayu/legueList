@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_10"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:padding="@dimen/padding_5"
+        app:cardCornerRadius="@dimen/dip_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="@dimen/margin_10"
+                tools:text="date" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_10">
+
+                <TextView
+                    android:id="@+id/tvEventHomeTeam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_toStartOf="@+id/linearScore"
+                    tools:text="manleft" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/linearScore"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvEventScoreHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/padding_5"
+                        android:paddingEnd="@dimen/padding_5"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold"
+                        tools:text="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/padding_5"
+                        android:paddingEnd="@dimen/padding_5"
+                        android:text="@string/vs"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/sp_20" />
+
+                    <TextView
+                        android:id="@+id/tvEventScoreAway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/padding_5"
+                        android:paddingEnd="@dimen/padding_5"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold"
+                        tools:text="1" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_toEndOf="@id/linearScore"
+                    android:id="@+id/tvEventAwayTeam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="textEnd"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/sp_16"
+                    tools:text="manright" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

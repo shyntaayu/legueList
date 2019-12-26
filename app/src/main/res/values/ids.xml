@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="league_badge" type="id" />
+    <item name="league_name" type="id" />
+    <item name="team_badge" type="id" />
+    <item name="team_name" type="id" />
+    <item name="image_view" type="id" />
+    <item name="name_liga" type="id" />
+    <item name="desc_liga" type="id" />
+    <item name="toolbar" type="id"/>
+</resources>
