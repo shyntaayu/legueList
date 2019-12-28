@@ -1,9 +1,7 @@
 package com.example.sub2.past_event
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
@@ -19,10 +17,7 @@ import com.example.sub2.api.ApiRepository
 import com.example.sub2.detail_event.DetailEventActivity
 import com.example.sub2.model.Event
 import com.example.sub2.util.SharedPreference
-import com.example.sub2.util.invisible
-import com.example.sub2.util.visible
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_past.*
 import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -50,15 +45,15 @@ class PastFragment : Fragment(), PastEventView {
         val view = inflater.inflate(R.layout.fragment_past, container, false)
         progressBar = view.findViewById(R.id.progressBarPast)
         swipeRefresh = view.findViewById(R.id.swipeRefreshPast)
-        val rv_event = view.findViewById(R.id.rv_event_past) as RecyclerView
-        rv_event.layoutManager = LinearLayoutManager(this.context)
+        val rvEvent = view.findViewById(R.id.rv_event_past) as RecyclerView
+        rvEvent.layoutManager = LinearLayoutManager(this.context)
         adapter = context?.let {
             PastEventAdapter(it, events){
                 toast(it.strEvent.toString())
-                startActivity<DetailEventActivity>("eventBundle" to it)
+                startActivity<DetailEventActivity>("eventId" to it.idEvent,"eventName" to it.strEvent, "eventType" to "past")
             }
         }!!
-        rv_event.adapter = adapter
+        rvEvent.adapter = adapter
         val sharedPreference: SharedPreference = SharedPreference(activity!!.baseContext)
         leagueId = sharedPreference.getValueString("leagueId").toString()
         presenter.getPastEventList(leagueId)

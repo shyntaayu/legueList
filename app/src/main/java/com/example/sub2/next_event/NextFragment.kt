@@ -16,12 +16,7 @@ import com.example.sub2.api.ApiRepository
 import com.example.sub2.detail_event.DetailEventActivity
 import com.example.sub2.model.Event
 import com.example.sub2.util.SharedPreference
-import com.example.sub2.util.invisible
-import com.example.sub2.util.visible
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_next.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -49,15 +44,15 @@ class NextFragment : Fragment(), NextEventView {
         val view = inflater.inflate(R.layout.fragment_next, container, false)
         progressBar = view.findViewById(R.id.progressBarNext)
         swipeRefresh = view.findViewById(R.id.swipeRefreshNext)
-        val rv_event = view.findViewById(R.id.rv_event) as RecyclerView
-        rv_event.layoutManager = LinearLayoutManager(this.context)
+        val rvEvent = view.findViewById(R.id.rv_event) as RecyclerView
+        rvEvent.layoutManager = LinearLayoutManager(this.context)
         adapter = context?.let {
             NextEventAdapter(it, events){
                 toast(it.strEvent.toString())
-                startActivity<DetailEventActivity>("eventBundle" to it)
+                startActivity<DetailEventActivity>("eventId" to it.idEvent,"eventName" to it.strEvent, "eventType" to "next")
             }
         }!!
-        rv_event.adapter = adapter
+        rvEvent.adapter = adapter
         val sharedPreference: SharedPreference = SharedPreference(activity!!.baseContext)
         leagueId = sharedPreference.getValueString("leagueId").toString()
         presenter.getEventList(leagueId)
@@ -80,7 +75,7 @@ class NextFragment : Fragment(), NextEventView {
     override fun showEventList(data: List<Event>) {
         swipeRefresh.isRefreshing=false
         Log.d("eventsi", data.size.toString())
-        Log.d("eventsi1", data.get(0).strEvent)
+        Log.d("eventsi1", data[0].strEvent)
         events.clear()
         events.addAll(data)
         adapter.notifyDataSetChanged()

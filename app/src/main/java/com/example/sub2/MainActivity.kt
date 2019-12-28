@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.example.sub2.R.array.*
 import com.example.sub2.detail_league.DetailLeagueActivity
+import com.example.sub2.favorite.FavoriteActivity
 import com.example.sub2.league.LeagueAdapter
 import com.example.sub2.model.Liga
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.portrait
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         rv_league.adapter = LeagueAdapter(this, ligas) {
             toast(it.name.toString())
             startActivity<DetailLeagueActivity>("ligaBundle" to it)
+        }
+
+        btnMenuFavorite.onClick{
+            startActivity<FavoriteActivity>()
         }
     }
 

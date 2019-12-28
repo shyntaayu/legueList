@@ -2,7 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBg"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/margin_10"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -15,9 +17,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:background="@drawable/border"
+            android:padding="@dimen/margin_10"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorBg"
+                android:id="@+id/btnMenuFavorite"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_added_to_favorites"
+                tools:ignore="InvalidId"
+                android:contentDescription="@string/todo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorites"/>
+        </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8"
             android:text="@string/league_list"
